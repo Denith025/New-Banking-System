@@ -1,0 +1,65 @@
+﻿<Window x:Class="BankDenith.AccountDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankDenith"
+        mc:Ignorable="d"
+            Title="AccountDetails" Height="600" Width="1050">
+    <Window.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate x:Key="RoundedBtnEnter" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid x:Name="frmAccDetails">
+        <Grid.Background>
+            <ImageBrush ImageSource="/WhatsApp Image 2025-03-29 at 21.42.03_d5da2e75.jpg"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="493*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Width="850" Height="400" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="#FF99A5BB" Grid.Column="1" Margin="36,0,0,0" Opacity="0.33"/>
+        <Label Style="{StaticResource MainTitles}" Content="Account Details" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Foreground="#FFC3D5DC"/>
+        <Label Style="{StaticResource LoginPageLables}" Content="Account Holder Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="141,180,0,0" Grid.Column="1" FontFamily="Lucida Bright"/>
+        <Label Style="{StaticResource LoginPageLables}" Content="Account Number" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="141,240,0,0" Grid.Column="1" FontFamily="Lucida Bright"/>
+        <Label Style="{StaticResource LoginPageLables}" Content="Account Type" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="141,300,0,0" Grid.Column="1" FontFamily="Lucida Bright"/>
+        <Label Style="{StaticResource LoginPageLables}" Content="Available Balance" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="141,360,0,0" Grid.Column="1" FontFamily="Lucida Bright"/>
+        <Button Style="{StaticResource PageBtn}" Content="Back" HorizontalAlignment="Left" Margin="796,446,0,0" VerticalAlignment="Top" Grid.Column="1" Click="Button_Click_2" Cursor="Hand"/>
+        <Label Grid.Column="1" HorizontalAlignment="Left" Margin="67,106,0,0" VerticalAlignment="Top" Content="Enter Your UserName" FontFamily="Lucida Bright" FontSize="18" FontWeight="Bold"/>
+        <TextBox x:Name="TxtUserName" Style="{StaticResource LoginTxtBox}"  Width="285" Margin="278,106,0,0" TextChanged="txtName_TextChanged" Grid.Column="1" Cursor="IBeam"/>
+        <Button Template="{DynamicResource RoundedBtnEnter}" x:Name="btnEnter" Style="{StaticResource PageBtn}" HorizontalAlignment="Left" Margin="619,106,0,0" VerticalAlignment="Top" Grid.Column="1" Content="Enter" Click="Button_Click_1" FontFamily="Lucida Bright" Cursor="Hand"/>
+        <Label x:Name="LblName" Grid.Column="1" HorizontalAlignment="Left" Margin="380,180,0,0" VerticalAlignment="Top" Width="400" Height="30" Background="White" FontFamily="Lucida Bright" FontSize="16"/>
+        <Label x:Name="LblNumber" Grid.Column="1" HorizontalAlignment="Left" Margin="380,240,0,0" VerticalAlignment="Top" Width="400" Height="30" Background="White" FontFamily="Lucida Bright" FontSize="16"/>
+        <Label x:Name="LblAccType" Grid.Column="1" HorizontalAlignment="Left" Margin="380,300,0,0" VerticalAlignment="Top" Width="400" Height="30" Background="White" FontFamily="Lucida Bright" FontSize="16"/>
+        <Label x:Name="LblBalance" Grid.Column="1" HorizontalAlignment="Left" Margin="380,360,0,0" VerticalAlignment="Top" Width="400" Height="30" Background="White" FontFamily="Lucida Bright" FontSize="16"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,65 @@
+﻿<Window x:Class="BankDenith.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankDenith"
+        mc:Ignorable="d"
+           Title="MainWindow" Height="600" Width="800">
+    <Window.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate x:Key="roundBtnLogin" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid x:Name="frmLogin">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="21*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/WhatsApp Image 2025-03-29 at 21.42.03_d5da2e75.jpg"/>
+        </Grid.Background>
+        <Label Style="{StaticResource MainTitles}" Content="Welcome To SNDD Online Banking" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFC3D5DC" Margin="151,0,0,0" />
+        <Rectangle Width="600" Height="400" HorizontalAlignment="Left" VerticalAlignment="Center" Fill="#FF99A5BB" Opacity="0.325" Grid.ColumnSpan="2" Margin="100,0,0,0" />
+        <Label Style="{StaticResource LoginPageLables}" Content="Username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,180,0,0" FontFamily="Lucida Bright" FontSize="18"/>
+        <Label Style="{StaticResource LoginPageLables}" Content="Password" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,260,0,0" FontFamily="Lucida Bright" FontSize="18" >
+            <Label.Background>
+                <SolidColorBrush Opacity="0.5"/>
+            </Label.Background>
+        </Label>
+        <TextBox x:Name="TxtUsername" Style="{StaticResource LoginTxtBox}" Width="300" Margin="350,180,0,0" Opacity="0.96" FontFamily="Lucida Bright" Cursor="IBeam" TextChanged="TxtUsername_TextChanged"/>
+        <Button Style="{StaticResource LoginBtn}" x:Name="BtnRegister" Content="Register" HorizontalAlignment="Left" Margin="465,385,0,0" VerticalAlignment="Top" ButtonBase.Click="BtnRegister_Click" Cursor="Hand"/>
+        <Button Template="{DynamicResource roundBtnLogin}" Style="{StaticResource LoginBtn}" x:Name="BtnLogin" Content="Login" HorizontalAlignment="Left" Margin="579,312,0,0" VerticalAlignment="Top" ButtonBase.Click="BtnLogin_Click" MouseEnter="BtnLogin_MouseEnter" Cursor="Hand"/>
+        <Button Style="{StaticResource LoginBtn}" x:Name="BtnClear" Content="Exit" HorizontalAlignment="Left" Margin="579,385,0,0" VerticalAlignment="Top" ButtonBase.Click="BtnClear_Click" Cursor="Hand"/>
+        <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Margin="350,260,0,0" VerticalAlignment="Top" Width="300" Height="30" Opacity="0.96" FontFamily="Lucida Bright" FontSize="16"/>
+        <Label Content="Don't have an Account ?" HorizontalAlignment="Left" Margin="296,392,0,0" VerticalAlignment="Top" FontFamily="Lucida Bright" FontWeight="Bold" Width="169"/>
+
+    </Grid>
+</Window>
